@@ -15,7 +15,7 @@ class ClipboardManager {
 
     _genMenu() {
         displayItem(item) {
-            ; Return the first 15 letters of the item and ""..." if it is longer
+            ; Return the first {displayMaxLength} letters of the item and ""..." if it is longer
             if (StrLen(item) > this.displayMaxLength) {
                 Return (SubStr(item, 1, this.displayMaxLength) . "...")
             } else {
