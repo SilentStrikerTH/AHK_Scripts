@@ -11,6 +11,7 @@ class ClipboardManager {
     menu := Menu()
 
     ; Params
+    clipboardMaxEntries := 7 ; How many entries it will store at a time (Don't go beyond 9, idk what will happen)
     displayMaxLength := 25  ; How many characters of an item the menu will display
 
     _genMenu() {
@@ -69,13 +70,13 @@ class ClipboardManager {
     }
 
     _saveEntry(newEntry) {
-        contentsFull := this.contents.Length = 5  ; If the contents Array contains 5 entries this is True
+        contentsFull := this.contents.Length = this.clipboardMaxEntries  ; If the contents Array contains 5 entries this is True
         for item in this.contents  ; Check if the newEntry already exists in the contents Array
             if (item = newEntry) {  ; If it does exist, then return
                 Return
             }
         if (contentsFull) {  ; If the contents Array is full, remove the oldest item
-            this.contents.RemoveAt(5)
+            this.contents.RemoveAt(this.clipboardMaxEntries)
         }
         this.contents.InsertAt(1, newEntry)  ; Add the item to the contents Array
     }
